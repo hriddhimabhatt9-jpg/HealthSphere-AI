@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthSphere AI - Video Consultation</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e7e8ea",
+                        "outline-variant": "#c3c6d6",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#a33500",
+                        "surface": "#f8f9fb",
+                        "primary-container": "#0052cc",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-secondary-fixed": "#002107",
+                        "background": "#f8f9fb",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-variant": "#e1e2e4",
+                        "on-secondary-container": "#00732a",
+                        "inverse-on-surface": "#f0f1f3",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#c4d2ff",
+                        "secondary-container": "#6ffb85",
+                        "on-primary-fixed": "#001848",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9fb",
+                        "secondary-fixed": "#72fe88",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "inverse-surface": "#2e3132",
+                        "surface-container": "#edeef0",
+                        "on-surface-variant": "#434654",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006e28",
+                        "surface-tint": "#0c56d0",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-dim": "#d9dadc",
+                        "outline": "#737685",
+                        "tertiary": "#7b2600",
+                        "primary": "#003d9b",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "primary-fixed": "#dae2ff",
+                        "inverse-primary": "#b2c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fb; color: #191c1e; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(24px); }
+        .active-pill { border-left: 4px solid #003d9b; background: rgba(0, 61, 155, 0.05); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex overflow-hidden h-screen bg-surface">
+<!-- NavigationDrawer Shell (Shared Component Mapping) -->
+<aside class="bg-slate-100 dark:bg-slate-900 h-screen w-64 fixed left-0 top-0 flex flex-col py-6 border-none shadow-none z-50">
+<div class="px-6 mb-8">
+<span class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100">HealthSphere AI</span>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Mapping Active State: Appointments corresponds to Consultation -->
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-sm">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-sm">Profile</span>
+</div>
+<!-- Active Navigation -->
+<div class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 font-semibold border-l-4 border-blue-700 dark:border-blue-400 bg-white/50 dark:bg-white/5 opacity-80 duration-150">
+<span class="material-symbols-outlined">event</span>
+<span class="font-inter text-sm font-bold">Appointments</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="font-inter text-sm">Doctors</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">description</span>
+<span class="font-inter text-sm">Reports</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">exercise</span>
+<span class="font-inter text-sm">Physiotherapy</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-inter text-sm">Medicine Tracker</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col h-screen relative bg-surface-container-low">
+<!-- TopAppBar (Shared Component Mapping) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-none shadow-sm shadow-blue-900/5 flex justify-between items-center h-16 px-8">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all focus:ring-2 ring-blue-500/20">
+<span class="material-symbols-outlined text-blue-700 dark:text-blue-400">search</span>
+</button>
+<h2 class="font-headline font-semibold text-on-surface">Live Consultation: Dr. Julian Vance</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-secondary-container/20 px-3 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-xs font-semibold text-on-secondary-container font-label">ENCRYPTED CONNECTION</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close up headshot of a professional doctor with a friendly expression in a modern clinic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjNnX4lD4aOULAOm24p0tPEjo_TnvZV4SpQgUIESV_8L9ORWSD2_SRtFMG2RTtoCckwYlnCtKxnp3rvlIvcJqbRhqIqTbyOtjiZcyihb7rE9uab8-MlYCuqtBGrRdAZdmXBNMXOwa2qcumRllji2YMV6J5qu1-_hQw7mmL47yAUXqFjL4oxT_x7Ozk28jdOj3EqOWK4Xt2cmWta5ehgnRuRsx90fVfRcgmuCtEIQ_Y4dgPRl69eGIwBu1OoHQVLfhWoT1PWkF0X3uV"/>
+</div>
+</div>
+</header>
+<!-- Consultation Interface -->
+<div class="mt-16 p-6 flex gap-6 h-[calc(100vh-4rem)] overflow-hidden">
+<!-- Left Column: Video Feed & Controls -->
+<div class="flex-grow flex flex-col gap-6">
+<!-- Main Video Area -->
+<div class="relative flex-grow bg-on-surface rounded-xl overflow-hidden shadow-sm">
+<img alt="Patient Video" class="w-full h-full object-cover opacity-90" data-alt="POV of a patient through a webcam, a middle-aged man sitting in a brightly lit room, looking attentive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOFfIc7Jp6c-klZHOg2764KdFk717oTLVxV4gtnGDcqR4zA6Wy5qefKhW-NlrI3kHI7UGqFKII5NuH0EldaxhQ52l17UYUwXdP_pQvtKDJsNKssyS_bYTG9f_jdBuZMcGG_uvf_MUXIzbm6tbjA3NpDYz2dP-IsLrq2TDXtNd5cWyBNuy72PX0ozaxYZanN3oftOjcq5-tQ3pXWHvzJBHnpbB7rF0vJ6FK61Lv3_0G6sgJdn2wmPnMNcDomb9Lmuj_puLh0qhN_g6Y"/>
+<!-- Overlay: Patient Name -->
+<div class="absolute top-6 left-6 flex items-center gap-3">
+<div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-headline font-bold text-sm text-on-surface">Patient: Robert Sterling</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm" style="font-variation-settings: 'FILL' 1;">fiber_manual_record</span>
+<span class="font-headline font-bold text-sm text-on-surface">00:14:22</span>
+</div>
+</div>
+<!-- Mini Self-View -->
+<div class="absolute top-6 right-6 w-48 h-32 rounded-lg border-2 border-white/20 overflow-hidden shadow-2xl glass-panel">
+<img alt="Doctor Feed" class="w-full h-full object-cover" data-alt="professional male doctor with glasses and a stethoscope in a clean medical office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhnFLGBuKPaOIHM_LrsSx7culNVVNqI1Dz7nroFSYBUT2TygHR92lzSSzJuCX_-qHG4z7TTQcO3zAnn_9ZZWRH--dU7qhkBzTVA5RX8pvw1K8SER5FxTBBGThaUlAA6ZcpLh4o_WcEWBa1Bc6PsOS8fzCjZQYAupE5Ybrw_5zOzTvse6iIsWiFBV8op9XN8SVzeJG44s6B_8JTiSSqeJaHaO6L0OqB_WUr44HxkmkbMBgb4VQxEbku9Yz22N6DnNh-E-9YrOXkMtsQ"/>
+</div>
+<!-- Call Controls Floating Bar -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 glass-panel p-3 rounded-2xl shadow-2xl">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">screen_share</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+<div class="w-px h-8 bg-outline-variant/30 mx-2"></div>
+<button class="h-12 px-6 flex items-center gap-2 rounded-xl bg-gradient-to-r from-error to-red-700 text-white font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">call_end</span>
+<span>End Meeting</span>
+</button>
+</div>
+</div>
+<!-- Bottom Panel: Vital Stats (Tonal Layering) -->
+<div class="h-32 flex gap-4">
+<div class="flex-1 bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<span class="text-xs font-bold text-on-surface-variant font-label tracking-widest">HEART RATE</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-extrabold text-error">72</span>
+<span class="text-xs text-on-surface-variant">BPM</span>
+</div>
+<div class="w-full h-8 bg-surface-container-low rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-r from-error/10 to-error/30 w-3/4"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<span class="text-xs font-bold text-on-surface-variant font-label tracking-widest">SPO2</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-extrabold text-secondary">98</span>
+<span class="text-xs text-on-surface-variant">%</span>
+</div>
+<div class="w-full h-8 bg-surface-container-low rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary/10 to-secondary/30 w-[98%]"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<span class="text-xs font-bold text-on-surface-variant font-label tracking-widest">BLOOD PRESSURE</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-extrabold text-primary">120/80</span>
+<span class="text-xs text-on-surface-variant">mmHg</span>
+</div>
+<div class="w-full h-8 bg-surface-container-low rounded-lg flex items-center px-2 gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Info, Chat & Notes -->
+<div class="w-96 flex flex-col gap-6">
+<!-- Patient Profile Summary -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Robert Sterling" class="w-full h-full object-cover" data-alt="a portrait of a middle-aged male patient with salt and pepper hair in a minimalist setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuUhSl6L8x-OvWY1EnAVtm6KJzGvyrgNOcuhXOYoOX1QI59XKCvqJ8xFCLb8kTdLftw1qy09LSQ_HDDUOQpXH4gADB-0TR6wUxQbsnDi-L0HyW4J5azagnE4-176dTrTowEABSNusVbevNk_G7i0RnQzv3FXIhhO7tCk0xwU7R8HpVfRMSNUT4xk4-aN__DLX4Xt4CvG3i60z6TCxPdA3N25OgFPw_B7kUthHXpHrYeTzBwRDPOcBFtXv5ZefYFBvXFXn3ysNNFcj-"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface">Robert Sterling</h3>
+<p class="text-xs text-on-surface-variant font-label">ID: #HS-90210 • 45 yrs</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Chief Complaint</span>
+<span class="font-bold text-on-surface">Chronic Migraines</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Last Visit</span>
+<span class="font-bold text-on-surface">Oct 12, 2023</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded-full">ALLERGY: PENICILLIN</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">INSURED</span>
+</div>
+</div>
+</div>
+<!-- Tabs for Chat and Notes -->
+<div class="flex-grow flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="flex border-b border-outline-variant/20">
+<button class="flex-1 py-4 text-sm font-bold text-primary border-b-2 border-primary">Clinical Notes</button>
+<button class="flex-1 py-4 text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">Live Chat</button>
+</div>
+<!-- Medical Notes Content -->
+<div class="flex-grow p-6 overflow-y-auto space-y-4">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Observations</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm focus:ring-2 ring-primary/20 h-32 resize-none font-body" placeholder="Start typing clinical observations..."></textarea>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Prescription Draft</label>
+<div class="bg-surface-container-low p-3 rounded-lg flex items-center justify-between border border-dashed border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">medication</span>
+<div>
+<p class="text-sm font-bold">Sumatriptan 50mg</p>
+<p class="text-[10px] text-on-surface-variant">1 tab every 24hrs as needed</p>
+</div>
+</div>
+<button class="p-1 hover:bg-error-container/20 rounded text-error">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-high text-on-surface font-bold rounded-xl text-sm hover:bg-outline-variant/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add Prescription</span>
+</button>
+</div>
+<!-- Chat Input (Visible when Chat Tab active) -->
+<div class="p-4 border-t border-outline-variant/20 bg-surface-container-low/50">
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-3 pl-4 pr-12 text-sm shadow-sm focus:ring-2 ring-primary/20" placeholder="Type message or share files..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for AI Assistance -->
+<div class="fixed bottom-10 right-10 z-50">
+<button class="w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<div class="absolute -top-12 right-0 glass-panel px-3 py-1 rounded-lg shadow-xl border border-primary/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-xs font-bold text-primary whitespace-nowrap">AI Diagnosis Assistant</span>
+</div>
+</div>
+</body></html>

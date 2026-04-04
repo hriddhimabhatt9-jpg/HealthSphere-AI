@@ -1,0 +1,362 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   HealthSphere AI — Global Styles  (Tailwind CSS v4)
+   Design System: "Clinical Precision & Fluid Intelligence"
+   ============================================================================ */
+
+/* ── Tailwind v4 Theme Tokens ───────────────────────────────────────────────── */
+
+@theme {
+  --color-primary: #003d9b;
+  --color-primary-container: #0052cc;
+  --color-primary-fixed: #dae2ff;
+  --color-primary-fixed-dim: #b2c5ff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #c4d2ff;
+
+  --color-secondary: #006e28;
+  --color-secondary-container: #6ffb85;
+  --color-secondary-fixed-dim: #53e16f;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #00732a;
+
+  --color-tertiary: #7b2600;
+  --color-tertiary-container: #a33500;
+  --color-tertiary-fixed-dim: #ffb59b;
+  --color-on-tertiary: #ffffff;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+
+  --color-background: #f8f9fb;
+  --color-surface: #f8f9fb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f6;
+  --color-surface-container: #edeef0;
+  --color-surface-container-high: #e7e8ea;
+  --color-surface-container-highest: #e1e2e4;
+  --color-surface-dim: #d9dadc;
+  --color-surface-bright: #f8f9fb;
+  --color-surface-tint: #0c56d0;
+
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #434654;
+  --color-on-background: #191c1e;
+
+  --color-outline: #737685;
+  --color-outline-variant: #c3c6d6;
+
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f3;
+  --color-inverse-primary: #b2c5ff;
+}
+
+/* ── CSS Custom Properties (non-color tokens) ───────────────────────────────── */
+
+:root {
+  /* Elevation shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(25, 28, 30, 0.04), 0 1px 2px -1px rgba(25, 28, 30, 0.04);
+  --shadow-md: 0 4px 16px -2px rgba(25, 28, 30, 0.06), 0 2px 4px -2px rgba(25, 28, 30, 0.04);
+  --shadow-lg: 0 12px 32px -4px rgba(25, 28, 30, 0.08), 0 4px 8px -4px rgba(25, 28, 30, 0.04);
+  --shadow-xl: 0 24px 48px -8px rgba(25, 28, 30, 0.12), 0 8px 16px -4px rgba(25, 28, 30, 0.04);
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Legacy aliases so var(--primary) etc. still work in components */
+  --primary: #003d9b;
+  --primary-container: #0052cc;
+  --primary-fixed: #dae2ff;
+  --primary-fixed-dim: #b2c5ff;
+  --on-primary: #ffffff;
+  --on-primary-container: #c4d2ff;
+  --secondary: #006e28;
+  --secondary-container: #6ffb85;
+  --secondary-fixed-dim: #53e16f;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #00732a;
+  --tertiary: #7b2600;
+  --tertiary-container: #a33500;
+  --tertiary-fixed-dim: #ffb59b;
+  --on-tertiary: #ffffff;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --background: #f8f9fb;
+  --surface: #f8f9fb;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f3f4f6;
+  --surface-container: #edeef0;
+  --surface-container-high: #e7e8ea;
+  --surface-container-highest: #e1e2e4;
+  --surface-dim: #d9dadc;
+  --surface-bright: #f8f9fb;
+  --surface-tint: #0c56d0;
+  --on-surface: #191c1e;
+  --on-surface-variant: #434654;
+  --on-background: #191c1e;
+  --outline: #737685;
+  --outline-variant: #c3c6d6;
+  --inverse-surface: #2e3132;
+  --inverse-on-surface: #f0f1f3;
+  --inverse-primary: #b2c5ff;
+}
+
+/* ── Base Layer ─────────────────────────────────────────────────────────────── */
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--on-surface);
+    line-height: 1.6;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--on-surface);
+  }
+
+  h1 { font-size: 3rem; font-weight: 800; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; font-weight: 600; }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: var(--primary-fixed-dim);
+    color: var(--primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--outline-variant);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--outline);
+  }
+}
+
+/* ── Components Layer ───────────────────────────────────────────────────────── */
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(195, 198, 214, 0.15);
+  }
+
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(195, 198, 214, 0.2);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #003d9b 0%, #0052cc 50%, #0067ff 100%);
+  }
+
+  .gradient-radial-primary {
+    background: radial-gradient(circle at top right, rgba(0, 61, 155, 0.15), transparent 60%);
+  }
+
+  .nav-item-active {
+    position: relative;
+  }
+
+  .nav-item-active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: var(--primary);
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100dvh;
+  }
+
+  @media (max-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .badge-stable {
+    background: var(--secondary-container);
+    color: var(--on-secondary-container);
+  }
+
+  .badge-critical {
+    background: var(--error-container);
+    color: #93000a;
+  }
+
+  .badge-warning {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .badge-info {
+    background: var(--primary-fixed);
+    color: var(--primary);
+  }
+
+  .card-interactive {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .chart-container {
+    background: var(--surface-container-lowest);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 2rem;
+    bottom: -1.5rem;
+    width: 2px;
+    background: var(--surface-container-high);
+  }
+
+  .timeline-item:last-child::before {
+    display: none;
+  }
+}
+
+/* ── Utilities Layer ────────────────────────────────────────────────────────── */
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* ── Keyframes (outside layers — they are global) ───────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ── Responsive Overrides ───────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+/* ── Print Styles ───────────────────────────────────────────────────────────── */
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .glass-card { background: white; border: 1px solid #e0e0e0; }
+}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Physiotherapy | HealthSphere AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e7e8ea",
+                        "outline-variant": "#c3c6d6",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#a33500",
+                        "surface": "#f8f9fb",
+                        "primary-container": "#0052cc",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-secondary-fixed": "#002107",
+                        "background": "#f8f9fb",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-variant": "#e1e2e4",
+                        "on-secondary-container": "#00732a",
+                        "inverse-on-surface": "#f0f1f3",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#c4d2ff",
+                        "secondary-fixed": "#72fe88",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "inverse-surface": "#2e3132",
+                        "surface-container": "#edeef0",
+                        "on-surface-variant": "#434654",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006e28",
+                        "surface-tint": "#0c56d0",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-dim": "#d9dadc",
+                        "outline": "#737685",
+                        "tertiary": "#7b2600",
+                        "primary": "#003d9b",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "primary-fixed": "#dae2ff",
+                        "inverse-primary": "#b2c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background">
+<!-- Navigation Drawer (Shared Component) -->
+<aside class="bg-slate-100 dark:bg-slate-900 h-screen w-64 fixed left-0 top-0 border-none flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<span class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100">HealthSphere AI</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-inter text-sm">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-inter text-sm">Doctors</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-inter text-sm">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 font-semibold border-l-4 border-blue-700 dark:border-blue-400 bg-white/50 dark:bg-white/5 transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="exercise">exercise</span>
+<span class="font-inter text-sm">Physiotherapy</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+<span class="font-inter text-sm">Medicine Tracker</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top AppBar (Shared Component) -->
+<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl fixed top-0 right-0 w-[calc(100%-16rem)] z-40 flex justify-between items-center h-16 px-8 border-none shadow-sm shadow-blue-900/5">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all focus:ring-2 ring-blue-500/20">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500" data-icon="search">search</span>
+</button>
+<h1 class="font-headline font-semibold text-primary">Physiotherapy Module</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile Avatar" data-alt="close-up portrait of a middle-aged male patient with a friendly smile, clean medical office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn_MX5imBJgVdJkAmMPRqVtTVr-EF0kYsYQXDMEDuPvNgCAB37XPeI9781nfr7AFeMEPuDPJnI0D581yrBNp7Q2chMlrwkJkYdyYaC5r0k1pnpNMmfDDrQQvCYq1doo0Yt8Bvd2JqbuO0SOIu28Vk_cX6kmBUnH2d3FwfYJ-0YL2DMdFZw_twe9-ugXcuzjgaRbuHLMzWQ39MHwpT1cUjsHDTBnqiTwJFTEeK-dxvKNCDNJM9pn3FuMUZzqLLi1-bZ4upHE4aitkTp"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12 bg-background min-h-screen">
+<!-- Hero Progress Header -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between">
+<div>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface mb-2">Keep it up, Alex!</h2>
+<p class="text-on-surface-variant font-body mb-6 max-w-md">You're 85% through your Lower Back Recovery program. Consistency is your greatest strength.</p>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-md font-semibold flex items-center gap-2 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Start Today's Session
+                    </button>
+<div class="flex flex-col">
+<span class="text-xs font-label uppercase tracking-wider text-outline">Est. Duration</span>
+<span class="text-lg font-headline font-bold text-primary">24 Minutes</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm shadow-blue-900/5 flex flex-col justify-center border border-outline-variant/15">
+<div class="flex justify-between items-center mb-4">
+<span class="font-headline font-bold text-on-surface">Weekly Mobility</span>
+<span class="text-secondary font-semibold text-sm">+12%</span>
+</div>
+<!-- Mini Progress Chart Placeholder -->
+<div class="h-32 flex items-end justify-between gap-1">
+<div class="w-full bg-primary/10 rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-primary/10 rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-primary/10 rounded-t-sm h-[55%]"></div>
+<div class="w-full bg-primary/10 rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-primary/10 rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-primary rounded-t-sm h-[95%]"></div>
+<div class="w-full bg-primary/10 rounded-t-sm h-[30%]"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] text-outline font-label uppercase">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Active Exercises Section -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<h3 class="text-xl font-headline font-bold text-on-surface">Daily Exercise Guide</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Exercise Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="woman performing a gentle yoga bridge pose on a blue mat in a bright minimalist studio, soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuji--AbfJTAmIOviC_Z0IjOYWgOhYwAbxH-AfG-Uik5BYZ2GUKFz4dX_xJMGklYJ71R3Soyvvoo0rpFb9oMGh00ZTFeZV69SL2zSW-Pbcpsjspb1YOWvDNrNcr4YeXUNrkCU60FrSXLbKJB4Hxnt32RKfqVsH4qQMgGSnMK_HqZi9w-867sNapNE8cQuPE30Na0kJGjufnn29pRINmlmKF3gsbM7h8UhtjXjIPv6axUiWFlaKNK1VHA40D3umvcJTDYm6W_v-HWzD"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">3 Sets</div>
+</div>
+<div class="p-6">
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Pelvic Tilts</h4>
+<p class="text-sm text-on-surface-variant mb-4 leading-relaxed line-clamp-2">Lying on your back with knees bent, gently arch your lower back and then flatten it against the floor.</p>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-primary font-semibold text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="timer">timer</span>
+                                    12 Reps
+                                </div>
+<button class="text-primary hover:underline text-sm font-bold">Details</button>
+</div>
+</div>
+</div>
+<!-- Exercise Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="man stretching his hamstrings using a resistance band on a wooden floor, focused expression, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOSHSzvVQ20ffMXhuyhUxXtFGvykgBpOsZZpo4lj0zh5GIDfCmN3N4FIklNRlg0wl5HKq1CfhgHhld8bywr7B97zazcwSpsUbzssWhkU8Jd3Lo2uyBwgh8XPWHiYS8cUtK-hShBI1bq6tP9wrNOCL-xvf_vVFh_c_qD8Ud67KNsJPXUhhGQqpEWmjU7X-AJi6h9n9els87yBZJa6_HPq6lBUYUaY_PgP5G6EAi2QF7R2n2ZtZ_jGtL1yyp2zCx77pn8ihzsl8phYwH"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">2 Sets</div>
+</div>
+<div class="p-6">
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Hamstring Stretch</h4>
+<p class="text-sm text-on-surface-variant mb-4 leading-relaxed line-clamp-2">Using a strap or towel, pull your straight leg toward your chest until you feel a gentle stretch.</p>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-primary font-semibold text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="timer">timer</span>
+                                    30s Hold
+                                </div>
+<button class="text-primary hover:underline text-sm font-bold">Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Tracking Chart Section -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/15">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Pain Level Progress</h3>
+<p class="text-sm text-on-surface-variant">Reported discomfort during session</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-xs font-bold bg-surface-container text-on-surface rounded-lg">Month</button>
+<button class="px-4 py-2 text-xs font-bold bg-primary text-white rounded-lg">Week</button>
+</div>
+</div>
+<div class="relative h-64 w-full">
+<!-- SVG Line Chart Drawing -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#003d9b" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#003d9b" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#e1e2e4" stroke-width="1" x1="0" x2="800" y1="0" y2="0"></line>
+<line stroke="#e1e2e4" stroke-width="1" x1="0" x2="800" y1="50" y2="50"></line>
+<line stroke="#e1e2e4" stroke-width="1" x1="0" x2="800" y1="100" y2="100"></line>
+<line stroke="#e1e2e4" stroke-width="1" x1="0" x2="800" y1="150" y2="150"></line>
+<line stroke="#e1e2e4" stroke-width="1" x1="0" x2="800" y1="200" y2="200"></line>
+<!-- Area Path -->
+<path d="M0,160 L133,140 L266,150 L400,90 L533,70 L666,40 L800,30 L800,200 L0,200 Z" fill="url(#chartGradient)"></path>
+<!-- Main Line -->
+<path d="M0,160 L133,140 L266,150 L400,90 L533,70 L666,40 L800,30" fill="none" stroke="#003d9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<!-- Data Points -->
+<circle cx="0" cy="160" fill="#003d9b" r="6"></circle>
+<circle cx="133" cy="140" fill="#003d9b" r="6"></circle>
+<circle cx="266" cy="150" fill="#003d9b" r="6"></circle>
+<circle cx="400" cy="90" fill="#003d9b" r="6"></circle>
+<circle cx="533" cy="70" fill="#003d9b" r="6"></circle>
+<circle cx="666" cy="40" fill="#003d9b" r="6"></circle>
+<circle cx="800" cy="30" fill="#003d9b" r="6"></circle>
+</svg>
+</div>
+<div class="mt-6 flex justify-between text-xs font-label text-outline">
+<span>Day 1</span>
+<span>Day 3</span>
+<span>Day 5</span>
+<span>Today</span>
+</div>
+</div>
+</div>
+<!-- Session History & Notes Section -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/15">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-6">Session History</h3>
+<div class="space-y-4">
+<!-- History Item 1 -->
+<div class="bg-white/40 p-4 rounded-lg flex items-center gap-4 group hover:bg-white transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold text-on-surface">Morning Routine</div>
+<div class="text-xs text-on-surface-variant">Yesterday, 08:30 AM</div>
+</div>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- History Item 2 -->
+<div class="bg-white/40 p-4 rounded-lg flex items-center gap-4 group hover:bg-white transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold text-on-surface">Stretching Session</div>
+<div class="text-xs text-on-surface-variant">2 days ago</div>
+</div>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- History Item 3 -->
+<div class="bg-white/40 p-4 rounded-lg flex items-center gap-4 group hover:bg-white transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="cancel" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold text-on-surface">Post-Work Therapy</div>
+<div class="text-xs text-on-surface-variant">3 days ago (Missed)</div>
+</div>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border-2 border-dashed border-outline-variant text-outline font-bold text-sm rounded-lg hover:border-primary hover:text-primary transition-colors">
+                        View Full Logs
+                    </button>
+</div>
+<!-- Specialist Note Glassmorphic Card -->
+<div class="glass-card rounded-xl p-6 border border-white/20 shadow-xl">
+<div class="flex items-center gap-3 mb-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional male physiotherapist wearing a white coat, friendly and authoritative look, modern clinical office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-9i3kbt4W4RM-5E9NcsPJyLxnSaH00dQRclzVQ19EVpBpmO31CZj5ZPwO1WfTYQtEMrAdepwq2igDlUcM8FJ9QwmFrpxUbCS_KXlJrGDm-UJUV6qA3va3Sq_f4zKwy8wo0bsEwCtLq4Ql9Qp_aQPjXr0w8TqBTDXvYsXLXQQ55qqk8T8hCbuV7qevPlYvjdrz9q0eTzzAhljud-r3biugXSJO0PbEmixlYK2yOTMEPJp2VHOqp-Tg6Dl64xif4Xory8foFRCdNSh2"/>
+<div>
+<div class="text-sm font-bold text-on-surface">Dr. Sarah Miller</div>
+<div class="text-[10px] uppercase font-label tracking-tighter text-primary">Lead Physiotherapist</div>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed italic">
+                        "Your hip alignment is showing significant improvement. Try to focus on the breathing pattern during the pelvic tilts today. We'll review your progress on Friday."
+                    </p>
+<div class="mt-4 flex gap-2">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded">New Feedback</span>
+<span class="px-2 py-1 bg-surface-container text-outline text-[10px] font-bold rounded">4h ago</span>
+</div>
+</div>
+<!-- Next Appointment Prompt -->
+<div class="bg-primary text-white rounded-xl p-6 flex items-center gap-4">
+<div class="flex-1">
+<div class="text-xs font-label uppercase opacity-80 mb-1">Next Live Review</div>
+<div class="text-lg font-headline font-bold">Friday, Oct 24</div>
+<div class="text-sm opacity-90">02:15 PM via Video Call</div>
+</div>
+<button class="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual Floating Action Button -->
+<button class="fixed bottom-8 right-8 bg-gradient-to-br from-primary to-primary-container text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-50 group">
+<span class="material-symbols-outlined text-2xl" data-icon="videocam" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="absolute right-16 bg-on-surface text-white px-4 py-2 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Emergency Specialist Call</span>
+</button>
+</body></html>
