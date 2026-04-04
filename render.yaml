@@ -1,0 +1,47 @@
+services:
+  # Backend Node.js Service
+  - type: web
+    name: healthsphere-backend
+    env: node
+    region: ohio
+    buildCommand: cd backend && npm install && npm run db:generate && npm run build
+    startCommand: cd backend && npm run db:push && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: healthsphere-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "*" # Allow frontend to connect
+
+  # Frontend Next.js Service
+  - type: web
+    name: healthsphere-frontend
+    env: node
+    region: ohio
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # During build, NEXT_PUBLIC env vars will be statically injected if needed
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: healthsphere-backend
+          property: url
+
+# Managed PostgreSQL Database
+databases:
+  - name: healthsphere-db
+    databaseName: healthsphere
+    user: api_user
+    region: ohio
