@@ -70,4 +70,4 @@ npm run dev
 
 ## Demo Flow
 
-For review, open `http://localhost:3000`. Navigate to Login and use the "Quick Demo Access" buttons to automatically preview the roles (Patient, Doctor, Admin).
+For review, open `https://healthsphere-frontend-215954139910.asia-south1.run.app`. Navigate to Login and use the "Quick Demo Access" buttons to automatically preview the roles (Patient, Doctor, Admin).
